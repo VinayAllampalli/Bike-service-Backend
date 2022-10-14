@@ -9,12 +9,16 @@ const userBookingData = new mongoose.Schema({
 
     Amount:{
         type:Number
-
     },
-    Orderid:{
-        type:Number  
+    Battery:{
+       type:String 
+    },
+    EngineOil:{
+       type:String 
+    },
+    userID:{
+        type:String
     }
-
 });
 const BookingData = mongoose.model('UserBookingData',userBookingData)
 module.exports=BookingData;

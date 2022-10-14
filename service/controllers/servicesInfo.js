@@ -98,3 +98,23 @@ exports.battery= async(req,res)=>{
     }
 
 }
+
+exports.getEngineOil = async(req,res)=>{
+console.log("get EngineOil Api is triggred")
+
+try{
+    let oil = await Service.findOne({ ServiceName: 'EngineOil' })
+    if(oil){
+        res.status(200).json({success:true,oil})
+    }
+    else{
+        res.status(400).json({success:false,message:"Something went Wrong"})
+    }
+
+}
+catch(err){
+    res.status(400).send(err);
+    console.log(err)
+
+}
+}

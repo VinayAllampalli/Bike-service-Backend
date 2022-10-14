@@ -25,7 +25,7 @@ const service = new mongoose.Schema({
         type:String
         },
         BatteryPrice:{
-        type:String
+        type:Number
         }
 
     }]   
