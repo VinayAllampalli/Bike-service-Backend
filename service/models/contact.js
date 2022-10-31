@@ -11,6 +11,9 @@ const contact = new mongoose.Schema({
     },
     userId:{
         type:String
+    },
+    UUID:{
+        type:String
     }
     
 
