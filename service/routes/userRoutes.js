@@ -7,6 +7,7 @@ const{bikeTypes,GetBikeData}=require('../controllers/bikename');
 const{ServiceType,GetServices,EngineOil,battery,getEngineOil}=require('../controllers/servicesInfo');
 const{booking,userBookData}=require('../controllers/userBookingData')
 const{ContactUs}=require('../controllers/contact')
+const{UpdateProfile}=require('../controllers/profile')
 
 router.post('/register',register);
 router.get('/confirm/:email/:token',mailVerfiy);
@@ -22,5 +23,6 @@ router.post('/userBooking',booking);
 router.get('/getEngineOil',getEngineOil)
 router.get('/getBookData/:userID',userBookData)
 router.post('/contactUs',ContactUs)
+router.put('/UpdateProfile/:userId',UpdateProfile)
 
 module.exports=router;

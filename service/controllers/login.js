@@ -51,6 +51,8 @@ exports.getUsers= async (req,res)=>{
             res.status(200).json({ success: true,message:"Data received", data})
         }
     }
-    catch(err){}
+    catch(err){
+        return (err)
+    }
     
 }
