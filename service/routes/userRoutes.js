@@ -8,6 +8,32 @@ const{ServiceType,GetServices,EngineOil,battery,getEngineOil}=require('../contro
 const{booking,userBookData}=require('../controllers/userBookingData')
 const{ContactUs}=require('../controllers/contact')
 const{UpdateProfile}=require('../controllers/profile')
+const multer = require("multer")
+
+const FILE_TYPE_MAP = {
+    "image/png": "png",
+    "image/pdf": "pdf",
+  };
+  
+  const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      const isValid = FILE_TYPE_MAP[file.mimetype];
+      let uploadError = new Error("invalid image type");
+  
+      if (isValid) {
+        uploadError = null;
+      }
+      cb(null, "public/uploads");
+    },
+    filename: function (req, file, cb) {
+      const filename = file.originalname;
+      console.log(filename);
+  
+      cb(null, `${Date.now()}-${filename}`);
+    },
+  });
+  
+  const uploadoptions = multer({ storage: storage });
 
 router.post('/register',register);
 router.get('/confirm/:email/:token',mailVerfiy);
@@ -23,6 +49,6 @@ router.post('/userBooking',booking);
 router.get('/getEngineOil',getEngineOil)
 router.get('/getBookData/:userID',userBookData)
 router.post('/contactUs',ContactUs)
-router.put('/UpdateProfile/:userId',UpdateProfile)
+router.put('/UpdateProfile/:userId',uploadoptions.single("file"),UpdateProfile)
 
 module.exports=router;

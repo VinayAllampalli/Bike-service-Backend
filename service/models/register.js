@@ -18,6 +18,9 @@ const user = new mongoose.Schema({
     },
     userId:{
         type:String
+    },
+    file:{
+        type:String
     }
 
 });
