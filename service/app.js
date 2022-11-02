@@ -73,6 +73,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(cors());
 var routeConfig = require('./routesConfig/routes-config')
+app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
 
 //routes initials
 app.use('/api',routeConfig)
