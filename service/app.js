@@ -86,19 +86,19 @@ console.log("----->",uuidv4())
 // npm install twilio
 // for account login in twilio use Email:samplemailid705@gmial.com passcode:VinayAllampalli@1998
 
-require('dotenv').config();
+// require('dotenv').config();
 
-const accountSid = "AC08d39d7f928f6c745cd8bbb80765d472";
-const authToken = "98bded1a8029ae0d6e80d87f05f73233";
-const client = require('twilio')(accountSid, authToken);
-client.messages
-.create({
-    from:'whatsapp:+14155238886',
-    to:'whatsapp:+917093116069',
-    body:'hi friends',
-    url: 'http://demo.twilio.com/docs/voice.xml'
-}).then (message=>{
-    console.log(message.sid)
-})
-.catch(err => console.log("------>",err));
+// const accountSid = "AC08d39d7f928f6c745cd8bbb80765d472";
+// const authToken = "98bded1a8029ae0d6e80d87f05f73233";
+// const client = require('twilio')(accountSid, authToken);
+// client.messages
+// .create({
+//     from:'whatsapp:+14155238886',
+//     to:'whatsapp:+917093116069',
+//     body:'hi friends',
+//     url: 'http://demo.twilio.com/docs/voice.xml'
+// }).then (message=>{
+//     console.log(message.sid)
+// })
+// .catch(err => console.log("------>",err));
 

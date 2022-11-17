@@ -5,9 +5,11 @@ const{mailVerfiy}= require('../controllers/mailVerfiy');
 const{login,getUsers} = require('../controllers/login');
 const{bikeTypes,GetBikeData}=require('../controllers/bikename');
 const{ServiceType,GetServices,EngineOil,battery,getEngineOil}=require('../controllers/servicesInfo');
-const{booking,userBookData}=require('../controllers/userBookingData')
-const{ContactUs}=require('../controllers/contact')
-const{UpdateProfile}=require('../controllers/profile')
+const{booking,userBookData}=require('../controllers/userBookingData');
+const{ContactUs}=require('../controllers/contact');
+const{UpdateProfile}=require('../controllers/profile');
+const{UpdateUserProfile}=require('../controllers/profileUpdate');
+const{fileUpload}=require('../controllers/fileUpload')
 const multer = require("multer")
 
 const FILE_TYPE_MAP = {
@@ -50,5 +52,7 @@ router.get('/getEngineOil',getEngineOil)
 router.get('/getBookData/:userID',userBookData)
 router.post('/contactUs',ContactUs)
 router.put('/UpdateProfile/:userId',uploadoptions.single("file"),UpdateProfile)
+router.put("/UpdateUserProfile/:userId",UpdateUserProfile)
+router.put('/fileUpload/:userId',uploadoptions.single("file"),fileUpload)
 
 module.exports=router;

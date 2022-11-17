@@ -1,14 +1,11 @@
 var User = require('../models/register');
-const Password = require('../utils/password');
-exports.UpdateProfile = async (req, res) => {
-    console.log("Update profile is triggred")
-    try {
-        console.log("----->",req.body)
+exports.fileUpload = async (req,res)=>{
+    console.log("file Upload Api is triggerd")
+    try{
+        console.log("----->",req.params.userId)
         const filename = req.file.filename;
-      const basepath = `${req.protocol}://${req.get('host')}/public/uploads/`;
+        const basepath = `${req.protocol}://${req.get('host')}/public/uploads/`;
         const data = {
-            username: req.body.username,
-            password: Password.passwordHash(req.body.password),
             file: `${basepath}${filename}`,
         }
         let result = await User.findOneAndUpdate({ userId: req.params.userId }, { $set: data })
@@ -22,7 +19,8 @@ exports.UpdateProfile = async (req, res) => {
             res.status(200).json({ success: true, message: "Updated successfully",data })
         }
     }
-    catch (err) {
+    
+    catch(err){
         console.log(err)
         res.status(400).json({ success: false })
     }
