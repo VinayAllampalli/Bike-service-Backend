@@ -11,6 +11,7 @@ const{UpdateProfile}=require('../controllers/profile');
 const{UpdateUserProfile}=require('../controllers/profileUpdate');
 const{fileUpload}=require('../controllers/fileUpload')
 const multer = require("multer")
+const{PersonalData,getallmydata} = require('../controllers/mydata')
 
 const FILE_TYPE_MAP = {
     "image/png": "png",
@@ -48,11 +49,13 @@ router.get('/getServices',GetServices);
 router.post('/Oils',EngineOil);
 router.post('/battery',battery);
 router.post('/userBooking',booking);
-router.get('/getEngineOil',getEngineOil)
-router.get('/getBookData/:userID',userBookData)
-router.post('/contactUs',ContactUs)
-router.put('/UpdateProfile/:userId',uploadoptions.single("file"),UpdateProfile)
-router.put("/UpdateUserProfile/:userId",UpdateUserProfile)
-router.put('/fileUpload/:userId',uploadoptions.single("file"),fileUpload)
+router.get('/getEngineOil',getEngineOil);
+router.get('/getBookData/:userID',userBookData);
+router.post('/contactUs',ContactUs);
+router.put('/UpdateProfile/:userId',uploadoptions.single("file"),UpdateProfile);
+router.put("/UpdateUserProfile/:userId",UpdateUserProfile);
+router.put('/fileUpload/:userId',uploadoptions.single("file"),fileUpload);
+router.post('/Mydata',PersonalData);
+router.get('/getmydata',getallmydata)
 
 module.exports=router;
